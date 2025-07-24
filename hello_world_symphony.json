@@ -1,0 +1,31 @@
+{
+  "task_create_project_dir": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {
+      "path": "C:\\syncphony\\hello_world_project"
+    }
+  },
+  "task_create_main_file": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {
+      "file_path": "C:\\syncphony\\hello_world_project\\app.py",
+      "content": "import platform\nimport datetime\n\nprint(\"----------------------------------------\")\nprint(\"Hello, Cross-Platform World from Syncphony!\")\nprint(f\"Executed at: {datetime.datetime.now().isoformat()}\")\nprint(f\"Running on: {platform.system()} {platform.release()}\")\nprint(\"----------------------------------------\")\n"
+    },
+    "dependencies": [
+      "task_create_project_dir"
+    ]
+  },
+  "task_run_app": {
+    "musician": "ShellExecutorMusician",
+    "action": "run_command",
+    "parameters": {
+      "command": "python app.py",
+      "cwd": "C:\\syncphony\\hello_world_project"
+    },
+    "dependencies": [
+      "task_create_main_file"
+    ]
+  }
+}

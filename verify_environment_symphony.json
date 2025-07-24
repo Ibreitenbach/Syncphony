@@ -1,0 +1,10 @@
+{
+  "task_run_environment_check": {
+    "musician": "ShellExecutorMusician",
+    "action": "run_command",
+    "parameters": {
+      "command": "python check_env.py",
+      "cwd": "C:\\syncphony\\"
+    }
+  }
+}

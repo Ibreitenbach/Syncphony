@@ -1,0 +1,12 @@
+# C:\Syncphony\requirements.txt
+
+# Core asynchronous and websocket libraries
+aiohttp
+websockets
+a_sync_plus
+
+# Schema validation for Symphonies and events
+jsonschema
+
+# Standard HTTP requests (if needed by any musician)
+requests

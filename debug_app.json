@@ -1,0 +1,56 @@
+{
+  "get_project_path": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "parameters": {
+      "prompt": "Enter the FULL, absolute path to your Android project's root directory (the folder containing 'gradlew.bat'):"
+    },
+    "outputs": {
+      "project_path": "user_response"
+    }
+  },
+  "prompt_to_reproduce_crash": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "dependencies": ["get_project_path"],
+    "parameters": {
+      "prompt": "IMPORTANT: Please follow these steps carefully.\n\n1. Connect your Android device to your computer via USB.\n2. Ensure 'USB Debugging' is enabled in Developer Options on the device.\n3. Manually install the APK located at '{project_path}\\app\\build\\outputs\\apk\\release\\app-release.apk'.\n4. Launch the app on your device.\n5. Wait for it to crash.\n\nOnce the app has crashed, click OK on this dialog to capture the log."
+    }
+  },
+  "capture_logcat": {
+    "role": "ShellExecutor",
+    "action": "execute_shell",
+    "dependencies": [
+      "prompt_to_reproduce_crash"
+    ],
+    "parameters": {
+      "command": "adb logcat -d -t 200",
+      "cwd": "{project_path}"
+    },
+    "outputs": {
+      "logcat_output": "stdout"
+    }
+  },
+  "save_log_to_file": {
+    "role": "CodeWriter",
+    "action": "write_file",
+    "dependencies": [
+      "capture_logcat"
+    ],
+    "parameters": {
+      "path": "{project_path}\\crash_log.txt",
+      "content": "{logcat_output}",
+      "overwrite": true
+    }
+  },
+  "report_log_saved": {
+    "role": "ShellExecutor",
+    "action": "execute_shell",
+    "dependencies": [
+      "save_log_to_file"
+    ],
+    "parameters": {
+      "command": "echo SUCCESS: The crash log has been saved to {project_path}\\crash_log.txt. Please copy the contents of that file and paste them in our chat."
+    }
+  }
+}

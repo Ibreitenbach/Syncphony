@@ -1,0 +1,37 @@
+{
+  "name": "Resilient_Directory_Creation",
+  "description": "Checks for a parent directory's existence before creating a subdirectory, then logs success.",
+  "tasks": [
+    {
+      "id": "check_if_root_exists",
+      "musician": "FileSystemMusician",
+      "action": "path_exists",
+      "parameters": {
+        "path": "C:\\"
+      },
+      "on_failure": "abort"
+    },
+    {
+      "id": "create_new_directory",
+      "musician": "FileSystemMusician",
+      "action": "create_directory",
+      "parameters": {
+        "path": "C:\\syncphony_output\\new_project"
+      },
+      "depends_on": [
+        "check_if_root_exists"
+      ]
+    },
+    {
+      "id": "log_success_message",
+      "musician": "Conductor",
+      "action": "log_message",
+      "parameters": {
+        "message": "Successfully created the directory C:\\syncphony_output\\new_project"
+      },
+      "depends_on": [
+        "create_new_directory"
+      ]
+    }
+  ]
+}

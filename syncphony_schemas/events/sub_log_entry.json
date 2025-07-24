@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://syncphony.com/schemas/events/sub_log_entry.json",
+  "title": "Sub-Log Entry Event",
+  "description": "Schema for detailed log entries, typically within a larger task context.",
+  "type": "object",
+  "allOf": [
+    { "$ref": "event_base.json" }
+  ],
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "const": "sub_log_entry",
+      "description": "The specific type of event."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Details of the sub-log entry.",
+      "properties": {
+        "log_type": {
+          "type": "string",
+          "enum": ["stdout", "stderr", "debug", "info", "warn", "error"],
+          "description": "The category of the log entry."
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual log message content."
+        },
+        "source": {
+          "type": ["string", "null"],
+          "description": "Optional: Originator of this sub-log (e.g., 'subprocess_output', 'internal_function')."
+        }
+      },
+      "required": ["log_type", "content"]
+    }
+  },
+  "required": ["event_type", "payload", "task_id"]
+}

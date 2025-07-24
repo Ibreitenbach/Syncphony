@@ -1,0 +1,37 @@
+{
+  "install_dependencies": {
+    "musician": "ShellExecutor",
+    "action": "run_command",
+    "parameters": {
+      "command": "npm install --legacy-peer-deps",
+      "cwd": "C:\\syncphony\\realvalue\\realvalueapp"
+    }
+  },
+  "reverse_tcp_port": {
+    "musician": "ShellExecutor",
+    "action": "run_command",
+    "parameters": {
+      "command": "adb reverse tcp:8081 tcp:8081",
+      "cwd": "C:\\syncphony\\realvalue\\realvalueapp"
+    },
+    "dependencies": ["install_dependencies"]
+  },
+  "start_metro": {
+    "musician": "ShellExecutor",
+    "action": "run_command",
+    "parameters": {
+      "command": "start \"Metro Bundler\" cmd /c \"npx react-native start\"",
+      "cwd": "C:\\syncphony\\realvalue\\realvalueapp"
+    },
+    "dependencies": ["reverse_tcp_port"]
+  },
+  "run_android": {
+    "musician": "ShellExecutor",
+    "action": "run_command",
+    "parameters": {
+      "command": "npx react-native run-android",
+      "cwd": "C:\\syncphony\\realvalue\\realvalueapp"
+    },
+    "dependencies": ["start_metro"]
+  }
+}

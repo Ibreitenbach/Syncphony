@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://syncphony.com/schemas/events/gdc_snapshot_event.json",
+  "title": "GDC Snapshot Event",
+  "description": "Schema for events signaling a Merkle GDC snapshot.",
+  "type": "object",
+  "allOf": [
+    { "$ref": "event_base.json" }
+  ],
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "const": "gdc_snapshot",
+      "description": "The specific type of event."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Details of the GDC snapshot.",
+      "properties": {
+        "merkle_root": {
+          "type": "string",
+          "description": "The computed Merkle root of the GDC at the time of the snapshot."
+        },
+        "previous_root": {
+          "type": ["string", "null"],
+          "description": "The Merkle root of the previous snapshot, if available."
+        }
+      },
+      "required": ["merkle_root"]
+    }
+  },
+  "required": ["event_type", "payload"]
+}

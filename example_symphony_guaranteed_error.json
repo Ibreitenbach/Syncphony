@@ -1,0 +1,15 @@
+{
+  "run_non_existent_command": {
+    "musician": "ShellExecutorMusician",
+    "action": "run_command",
+    "parameters": {"command": "this_command_does_not_exist_xyz123", "cwd": "C:\\"},
+    "description": "Attempt to run a command that is guaranteed not to exist."
+  },
+  "never_runs_if_dependency_fails": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {"path": "C:\\syncphony\\this_dir_should_never_exist"},
+    "dependencies": ["run_non_existent_command"],
+    "description": "This task should never execute if the previous one fails."
+  }
+}

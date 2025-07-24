@@ -1,0 +1,41 @@
+{
+  "read_previous_log": {
+    "role": "FileSystem",
+    "action": "read_file",
+    "parameters": {
+      "path": "C:/Syncphony/run_log.txt"
+    },
+    "outputs": {
+      "log_content": "content"
+    }
+  },
+  "send_log_to_gemini_gateway": {
+    "role": "Web",
+    "action": "http_post_request",
+    "dependencies": [
+      "read_previous_log"
+    ],
+    "parameters": {
+      "url": "http://127.0.0.1:5000/compose",
+      "json_data": {
+        "prompt": "Based on the following log, please compose the next Symphony to continue the work. If the task was successful, propose the next logical step. If it failed, propose a Symphony to debug or fix the issue.",
+        "log_content": "{log_content}"
+      }
+    },
+    "outputs": {
+      "next_symphony_json": "body"
+    }
+  },
+  "save_next_symphony": {
+    "role": "CodeWriter",
+    "action": "write_file",
+    "dependencies": [
+      "send_log_to_gemini_gateway"
+    ],
+    "parameters": {
+      "path": "C:/Syncphony/symphony_next.json",
+      "content": "{next_symphony_json}",
+      "overwrite": true
+    }
+  }
+}

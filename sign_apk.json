@@ -1,0 +1,110 @@
+{
+  "get_project_path": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "parameters": {
+      "prompt": "Enter the FULL, absolute path to your Android project's root directory (the folder containing 'gradlew.bat'):"
+    },
+    "outputs": {
+      "project_path": "user_response"
+    }
+  },
+  "create_app_directory": {
+    "role": "FileSystem",
+    "action": "create_directory",
+    "dependencies": ["get_project_path"],
+    "parameters": {
+      "path": "{project_path}\\app"
+    }
+  },
+  "get_keystore_password": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "parameters": {
+      "prompt": "Enter the password for the new keystore:"
+    },
+    "dependencies": ["create_app_directory"],
+    "outputs": {
+      "keystore_password": "user_response"
+    }
+  },
+  "get_key_alias": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "parameters": {
+      "prompt": "Enter the alias for the new key (e.g., 'release'):"
+    },
+    "dependencies": ["get_keystore_password"],
+    "outputs": {
+      "key_alias": "user_response"
+    }
+  },
+  "get_key_password": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "parameters": {
+      "prompt": "Enter the password for the new key alias (can be the same as the keystore password):"
+    },
+    "dependencies": ["get_key_alias"],
+    "outputs": {
+      "key_password": "user_response"
+    }
+  },
+  "get_user_dname": {
+    "role": "HumanInput",
+    "action": "prompt_user",
+    "parameters": {
+      "prompt": "CRITICAL: Enter the Distinguished Name in 'key=value' format. EXAMPLE: CN=Your Name, OU=Dev, O=Your Org, L=City, C=US"
+    },
+    "dependencies": ["get_key_password"],
+    "outputs": {
+      "user_dname": "user_response"
+    }
+  },
+  "generate_keystore": {
+    "role": "ShellExecutor",
+    "action": "execute_shell",
+    "parameters": {
+      "command": "keytool -genkey -v -keystore release-keystore.jks -alias {key_alias} -keyalg RSA -keysize 2048 -validity 10000 -storepass {keystore_password} -keypass {key_password} -dname \"{user_dname}\"",
+      "cwd": "{project_path}\\app"
+    },
+    "dependencies": [
+      "get_user_dname"
+    ]
+  },
+  "create_signing_config_file": {
+    "role": "CodeWriter",
+    "action": "write_file",
+    "parameters": {
+      "path": "{project_path}\\app\\signing.gradle",
+      "content": "android.signingConfigs {{\n    release {{\n        storeFile file('release-keystore.jks')\n        storePassword '{keystore_password}'\n        keyAlias '{key_alias}'\n        keyPassword '{key_password}'\n    }}\n}}\nandroid.buildTypes.release {{\n    signingConfig android.signingConfigs.release\n}}",
+      "overwrite": true
+    },
+    "dependencies": [
+      "generate_keystore"
+    ]
+  },
+  "apply_signing_config": {
+    "role": "CodeWriter",
+    "action": "write_file",
+    "parameters": {
+      "path": "{project_path}\\app\\build.gradle",
+      "content": "\napply from: 'signing.gradle'\n",
+      "overwrite": false
+    },
+    "dependencies": [
+      "create_signing_config_file"
+    ]
+  },
+  "build_release_apk": {
+    "role": "GradleManager",
+    "action": "execute_gradle_task",
+    "parameters": {
+      "project_dir": "{project_path}",
+      "task": "assembleRelease"
+    },
+    "dependencies": [
+      "apply_signing_config"
+    ]
+  }
+}

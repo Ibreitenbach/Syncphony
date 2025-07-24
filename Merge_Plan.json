@@ -1,0 +1,69 @@
+{
+  "backup_01": {
+    "musician": "FileSystem",
+    "action": "copy_directory",
+    "parameters": {
+      "source": "./realvalueapp",
+      "destination": "./realvalueapp_backup"
+    },
+    "description": "Backup the target application before modification."
+  },
+  "migrate_02": {
+    "musician": "FileSystem",
+    "action": "copy_directory",
+    "parameters": {
+      "source": "./RealValue/frontend/src",
+      "destination": "./realvalueapp/src"
+    },
+    "description": "Migrate the core source code."
+  },
+  "migrate_03": {
+    "musician": "FileSystem",
+    "action": "copy_file",
+    "parameters": {
+      "source": "./RealValue/frontend/app.tsx",
+      "destination": "./realvalueapp/app.tsx"
+    },
+    "description": "Copy the TypeScript entry point file."
+  },
+  "migrate_04": {
+    "musician": "FileSystem",
+    "action": "copy_file",
+    "parameters": {
+      "source": "./RealValue/frontend/app.json",
+      "destination": "./realvalueapp/app.json"
+    },
+    "description": "Copy the application configuration file."
+  },
+  "harmonize_05": {
+    "musician": "CodeWriter",
+    "action": "update_json_file",
+    "parameters": {
+      "file_path": "./realvalueapp/package.json",
+      "update_data": {
+        "dependencies": {
+          "expo": "~51.0.14",
+          "expo-font": "~12.0.7",
+          "expo-status-bar": "~1.12.1",
+          "react": "18.2.0",
+          "react-dom": "18.2.0",
+          "react-native": "0.74.2",
+          "react-native-web": "~0.19.10"
+        },
+        "devDependencies": {
+          "@babel/core": "^7.20.0"
+        }
+      }
+    },
+    "description": "Harmonize dependencies from the Expo frontend project."
+  },
+  "finalize_06": {
+    "musician": "ShellExecutor",
+    "action": "run_command",
+    "parameters": {
+      "command": "npm install",
+      "cwd": "./realvalueapp"
+    },
+    "description": "Install harmonized dependencies."
+  }
+}

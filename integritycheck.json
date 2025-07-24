@@ -1,0 +1,34 @@
+{
+  "name": "Orchestral_Integrity_Check",
+  "description": "A Symphony to diagnose desynchronization within the Syncphony Python codebase by creating and executing a static analysis script.",
+  "tasks": [
+    {
+      "id": "create_integrity_check_script",
+      "musician": "FileSystemMusician",
+      "action": "write_file",
+      "parameters": {
+        "path": "C:\\syncphony\\integrity_check.py",
+        "content_file": "integrity_check_script_content.py"
+      }
+    },
+    {
+      "id": "execute_integrity_check",
+      "musician": "ShellExecutorMusician",
+      "action": "run_command",
+      "parameters": {
+        "command": "python integrity_check.py",
+        "working_directory": "C:\\syncphony\\"
+      },
+      "depends_on": ["create_integrity_check_script"]
+    },
+    {
+      "id": "log_analysis_results",
+      "musician": "Conductor",
+      "action": "log_message",
+      "parameters": {
+        "message": "Integrity check complete. Review the output from the ShellExecutorMusician for the full report."
+      },
+      "depends_on": ["execute_integrity_check"]
+    }
+  ]
+}

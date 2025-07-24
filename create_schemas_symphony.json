@@ -1,0 +1,59 @@
+{
+  "create_schemas_base_dir": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {
+      "path": "C:\\syncphony\\syncphony_schemas"
+    },
+    "description": "Create the base directory for Syncphony schemas."
+  },
+  "create_schemas_events_dir": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {
+      "path": "C:\\syncphony\\syncphony_schemas\\events"
+    },
+    "dependencies": ["create_schemas_base_dir"],
+    "description": "Create the 'events' subdirectory for specific event schemas."
+  },
+  "write_event_base_schema": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {
+      "file_path": "C:\\syncphony\\syncphony_schemas\\events\\event_base.json",
+      "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://syncphony.com/schemas/events/event_base.json\",\n  \"title\": \"Base Telemetry Event\",\n  \"description\": \"Base schema for all Syncphony telemetry events, defining common metadata.\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Unique identifier for this specific event instance (e.g., UUID).\"\n    },\n    \"timestamp\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\",\n      \"description\": \"ISO 8601 UTC timestamp of when the event occurred.\"\n    },\n    \"schema_version\": {\n      \"type\": \"string\",\n      \"pattern\": \"^\\\\d+\\\\.\\\\d+\\\\.\\\\d+$\",\n      \"description\": \"Semantic version of the schema used for this event (e.g., '1.0.0').\"\n    },\n    \"musician_name\": {\n      \"type\": \"string\",\n      \"description\": \"Name of the Musician or component emitting the event (e.g., 'Conductor', 'ShellExecutorMusician').\"\n    },\n    \"task_id\": {\n      \"type\": [\"string\", \"null\"],\n      \"description\": \"Optional: ID of the Symphony task related to this event.\",\n      \"default\": null\n    },\n    \"parent_event_id\": {\n      \"type\": [\"string\", \"null\"],\n      \"description\": \"Optional: For sub-events (e.g., sub_log_entry), ID of the parent event.\",\n      \"default\": null\n    },\n    \"sensitive_data_masked\": {\n      \"type\": \"boolean\",\n      \"description\": \"Indicates if any sensitive data within the payload was masked.\",\n      \"default\": false\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"timestamp\",\n    \"schema_version\",\n    \"musician_name\"\n  ]\n}"
+    },
+    "dependencies": ["create_schemas_events_dir"],
+    "description": "Write the event_base.json schema file."
+  },
+  "write_task_lifecycle_schema": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {
+      "file_path": "C:\\syncphony\\syncphony_schemas\\events\\task_lifecycle_event.json",
+      "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://syncphony.com/schemas/events/task_lifecycle_event.json\",\n  \"title\": \"Task Lifecycle Event\",\n  \"description\": \"Schema for events tracking the lifecycle of a Symphony task (start, progress, complete, error).\",\n  \"type\": \"object\",\n  \"allOf\": [\n    { \"$ref\": \"event_base.json\" }\n  ],\n  \"properties\": {\n    \"event_type\": {\n      \"type\": \"string\",\n      \"enum\": [\"task_start\", \"task_progress\", \"task_complete\", \"task_error\"],\n      \"description\": \"The specific type of task lifecycle event.\"\n    },\n    \"payload\": {\n      \"type\": \"object\",\n      \"description\": \"Details specific to the task lifecycle event.\",\n      \"properties\": {\n        \"method\": {\n          \"type\": \"string\",\n          \"description\": \"Name of the method being executed (e.g., 'write_file', 'run_command').\"\n        },\n        \"status\": {\n          \"type\": [\"string\", \"null\"],\n          \"enum\": [\"success\", \"failure\", \"in_progress\", null],\n          \"description\": \"Overall status of the task at this event point.\"\n        },\n        \"args\": {\n          \"type\": \"object\",\n          \"description\": \"Arguments passed to the method, potentially masked.\",\n          \"additionalProperties\": true\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"Human-readable description of the event.\"\n        },\n        \"duration_ms\": {\n          \"type\": [\"number\", \"null\"],\n          \"description\": \"Duration of the task/operation in milliseconds (for complete/error events).\",\n          \"minimum\": 0\n        },\n        \"result_summary\": {\n          \"type\": [\"string\", \"null\"],\n          \"description\": \"Summary of the method's return value (for complete events).\",\n          \"maxLength\": 500\n        },\n        \"error_type\": {\n          \"type\": [\"string\", \"null\"],\n          \"description\": \"Type of error (e.g., 'FileNotFoundError', 'CalledProcessError').\"\n        },\n        \"error_message\": {\n          \"type\": [\"string\", \"null\"],\n          \"description\": \"Detailed error message.\"\n        },\n        \"stack_trace\": {\n          \"type\": [\"string\", \"null\"],\n          \"description\": \"Full stack trace if an error occurred.\"\n        }\n      },\n      \"required\": [\"method\", \"description\"]\n    }\n  },\n  \"required\": [\"event_type\", \"payload\"],\n  \"if\": { \"properties\": { \"event_type\": { \"const\": \"task_error\" } } },\n  \"then\": { \"required\": [\"task_id\"], \"properties\": { \"payload\": { \"required\": [\"error_type\", \"error_message\"] } } },\n  \"else\": { \"if\": { \"properties\": { \"event_type\": { \"const\": \"task_complete\" } } },\n            \"then\": { \"required\": [\"task_id\"], \"properties\": { \"payload\": { \"required\": [\"result_summary\", \"duration_ms\"] } } }\n  }\n}"
+    },
+    "dependencies": ["write_event_base_schema"],
+    "description": "Write the task_lifecycle_event.json schema file."
+  },
+  "write_gdc_snapshot_schema": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {
+      "file_path": "C:\\syncphony\\syncphony_schemas\\events\\gdc_snapshot_event.json",
+      "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://syncphony.com/schemas/events/gdc_snapshot_event.json\",\n  \"title\": \"GDC Snapshot Event\",\n  \"description\": \"Schema for events signaling a Merkle GDC snapshot.\",\n  \"type\": \"object\",\n  \"allOf\": [\n    { \"$ref\": \"event_base.json\" }\n  ],\n  \"properties\": {\n    \"event_type\": {\n      \"type\": \"string\",\n      \"const\": \"gdc_snapshot\",\n      \"description\": \"The specific type of event.\"\n    },\n    \"payload\": {\n      \"type\": \"object\",\n      \"description\": \"Details of the GDC snapshot.\",\n      \"properties\": {\n        \"merkle_root\": {\n          \"type\": \"string\",\n          \"description\": \"The computed Merkle root of the GDC at the time of the snapshot.\"\n        },\n        \"previous_root\": {\n          \"type\": [\"string\", \"null\"],\n          \"description\": \"The Merkle root of the previous snapshot, if available.\"\n        }\n      },\n      \"required\": [\"merkle_root\"]\n    }\n  },\n  \"required\": [\"event_type\", \"payload\"]\n}"
+    },
+    "dependencies": ["write_event_base_schema"],
+    "description": "Write the gdc_snapshot_event.json schema file."
+  },
+  "write_sub_log_entry_schema": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {
+      "file_path": "C:\\syncphony\\syncphony_schemas\\events\\sub_log_entry.json",
+      "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://syncphony.com/schemas/events/sub_log_entry.json\",\n  \"title\": \"Sub-Log Entry Event\",\n  \"description\": \"Schema for detailed log entries, typically within a larger task context.\",\n  \"type\": \"object\",\n  \"allOf\": [\n    { \"$ref\": \"event_base.json\" }\n  ],\n  \"properties\": {\n    \"event_type\": {\n      \"type\": \"string\",\n      \"const\": \"sub_log_entry\",\n      \"description\": \"The specific type of event.\"\n    },\n    \"payload\": {\n      \"type\": \"object\",\n      \"description\": \"Details of the sub-log entry.\",\n      \"properties\": {\n        \"log_type\": {\n          \"type\": \"string\",\n          \"enum\": [\"stdout\", \"stderr\", \"debug\", \"info\", \"warn\", \"error\"],\n          \"description\": \"The category of the log entry.\"\n        },\n        \"content\": {\n          \"type\": \"string\",\n          \"description\": \"The actual log message content.\"\n        },\n        \"source\": {\n          \"type\": [\"string\", \"null\"],\n          \"description\": \"Optional: Originator of this sub-log (e.g., 'subprocess_output', 'internal_function').\"\n        }\n      },\n      \"required\": [\"log_type\", \"content\"]\n    }\n  },\n  \"required\": [\"event_type\", \"payload\", \"task_id\"]\n}"
+    },
+    "dependencies": ["write_event_base_schema"],
+    "description": "Write the sub_log_entry.json schema file."
+  }
+}

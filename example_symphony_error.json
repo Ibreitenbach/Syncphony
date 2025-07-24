@@ -1,0 +1,13 @@
+{
+  "create_non_existent_dir": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {"path": "C:\\non_existent_drive_or_path\\sub_dir"}
+  },
+  "dependent_task": {
+    "musician": "ShellExecutorMusician",
+    "action": "run_command",
+    "parameters": {"command": "echo This should not run", "cwd": "C:\\"},
+    "dependencies": ["create_non_existent_dir"]
+  }
+}

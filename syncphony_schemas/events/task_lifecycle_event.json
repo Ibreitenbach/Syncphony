@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://syncphony.com/schemas/events/task_lifecycle_event.json",
+  "title": "Task Lifecycle Event",
+  "description": "Schema for events tracking the lifecycle of a Symphony task (start, progress, complete, error).",
+  "type": "object",
+  "allOf": [
+    { "$ref": "event_base.json" }
+  ],
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "enum": ["task_start", "task_progress", "task_complete", "task_error"],
+      "description": "The specific type of task lifecycle event."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Details specific to the task lifecycle event.",
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "Name of the method being executed (e.g., 'write_file', 'run_command')."
+        },
+        "status": {
+          "type": ["string", "null"],
+          "enum": ["success", "failure", "in_progress", null],
+          "description": "Overall status of the task at this event point."
+        },
+        "args": {
+          "type": "object",
+          "description": "Arguments passed to the method, potentially masked.",
+          "additionalProperties": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the event."
+        },
+        "duration_ms": {
+          "type": ["number", "null"],
+          "description": "Duration of the task/operation in milliseconds (for complete/error events).",
+          "minimum": 0
+        },
+        "result_summary": {
+          "type": ["string", "null"],
+          "description": "Summary of the method's return value (for complete events).",
+          "maxLength": 500
+        },
+        "error_type": {
+          "type": ["string", "null"],
+          "description": "Type of error (e.g., 'FileNotFoundError', 'CalledProcessError')."
+        },
+        "error_message": {
+          "type": ["string", "null"],
+          "description": "Detailed error message."
+        },
+        "stack_trace": {
+          "type": ["string", "null"],
+          "description": "Full stack trace if an error occurred."
+        }
+      },
+      "required": ["method", "description"]
+    }
+  },
+  "required": ["event_type", "payload"],
+  "if": { "properties": { "event_type": { "const": "task_error" } } },
+  "then": { "required": ["task_id"], "properties": { "payload": { "required": ["error_type", "error_message"] } } },
+  "else": { "if": { "properties": { "event_type": { "const": "task_complete" } } },
+            "then": { "required": ["task_id"], "properties": { "payload": { "required": ["result_summary", "duration_ms"] } } }
+  }
+}

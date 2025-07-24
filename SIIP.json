@@ -1,0 +1,20 @@
+{
+  "task1": {
+    "role": "FileSystem",
+    "action": "create_directory",
+    "parameters": {
+      "path": "C:/temp/siip_examples"
+    },
+    "on_success": ["task2"]
+  },
+  "task2": {
+    "role": "CodeWriter",
+    "action": "write_file",
+    "parameters": {
+      "file_path": "C:/temp/siip_examples/siip_transmission_example.json",
+      "content": "{\"protocol\": \"SIIP\",\"version\": \"1.0\",\"tempo\": {\"timestamp\": \"2025-07-21T00:18:44.584Z\",\"sessionId\": \"e9a65b4-c150-4d2b-8c61-76a7822d8e4f\",\"environment\": {\"os\": \"Windows 11 / MINGW64\",\"node\": \"18.20.8\",\"yarn\": \"1.22.22\",\"cpu\": \"x86_64\"},\"project\": {\"root\": \"C:/RealValue/frontend\",\"git_branch\": \"main\"}},\"crescendo\": \"ANALYZE_ERROR\",\"motive\": {\"type\": \"BUILD_FAILURE\",\"source\": \"npx react-native run-android\",\"payload\": {\"error_string\": \"java.lang.ClassNotFoundException: Didn't find class \\\"com.example.app.MainApplication\\\"\",\"error_vector\": [0.23, -0.81, ...],\"file_tree_hash\": \"a1b2c3d4...\",\"relevant_files\": [{\"path\": \"android/app/build.gradle\",\"content_hash\": \"e5f6g7h8...\"}, {\"path\": \"android/app/src/main/AndroidManifest.xml\",\"content_hash\": \"i9j0k1l2...\"}] }}}"
+    },
+    "dependencies": ["task1"],
+    "on_success": []
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "patch_app_tsx": {
+    "musician": "CodeWriter",
+    "action": "find_and_replace_in_file",
+    "parameters": {
+      "file_path": "./realvalueapp/app.tsx",
+      "replacements": [
+        {
+          "find_regex": "import { useFonts } from 'expo-font';",
+          "replace_with": ""
+        },
+        {
+          "find_regex": "import { StatusBar } from 'expo-status-bar';",
+          "replace_with": "import { StatusBar } from 'react-native';"
+        },
+        {
+          "find_regex": "const \\[fontsLoaded\\] = useFonts\\(\\{[\\s\\S]*?\\}\\);",
+          "replace_with": ""
+        },
+        {
+          "find_regex": "if \\(!fontsLoaded\\) \\{[\\s\\S]*?return null;[\\s\\S]*?\\}",
+          "replace_with": ""
+        },
+        {
+          "find_regex": "<StatusBar style=\"auto\" />",
+          "replace_with": "<StatusBar barStyle=\"dark-content\" />"
+        }
+      ]
+    },
+    "description": "Removes incompatible Expo modules (useFonts, StatusBar) from app.tsx to prevent the app from freezing."
+  }
+}

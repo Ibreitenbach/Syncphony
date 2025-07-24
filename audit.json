@@ -1,0 +1,26 @@
+{
+  "audit_root_directory": {
+    "musician": "FileSystem",
+    "action": "list_directory_contents",
+    "parameters": {
+      "target_path": "."
+    },
+    "description": "List all files and folders in the main C:/syncphony/ directory."
+  },
+  "audit_realvalue_folder": {
+    "musician": "FileSystem",
+    "action": "list_directory_contents",
+    "parameters": {
+      "target_path": "./realvalue"
+    },
+    "description": "List the contents of the C:/syncphony/realvalue/ folder."
+  },
+  "audit_realvalueapp_folder": {
+    "musician": "FileSystem",
+    "action": "list_directory_contents",
+    "parameters": {
+      "target_path": "./realvalueapp"
+    },
+    "description": "List the contents of the C:/syncphony/realvalueapp/ folder."
+  }
+}

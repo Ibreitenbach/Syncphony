@@ -1,0 +1,19 @@
+{
+  "create_temp_dir": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {"path": "C:\\syncphony\\test_output\\temp_project"}
+  },
+  "write_config_file": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {"file_path": "C:\\syncphony\\test_output\\temp_project\\config.txt", "content": "KEY=VALUE\nLOG_LEVEL=INFO"},
+    "dependencies": ["create_temp_dir"]
+  },
+  "list_dir_content": {
+    "musician": "ShellExecutorMusician",
+    "action": "run_command",
+    "parameters": {"command": "dir", "cwd": "C:\\syncphony\\test_output\\temp_project"},
+    "dependencies": ["write_config_file"]
+  }
+}

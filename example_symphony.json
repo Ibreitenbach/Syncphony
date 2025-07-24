@@ -1,0 +1,19 @@
+{
+  "setup_dir": {
+    "musician": "FileSystemMusician",
+    "action": "create_directory",
+    "parameters": {"path": "C:\\syncphony\\sim_project\\logs"}
+  },
+  "write_initial_log": {
+    "musician": "FileSystemMusician",
+    "action": "write_file",
+    "parameters": {"file_path": "C:\\syncphony\\sim_project\\logs\\app.log", "content": "Application started.\n"},
+    "dependencies": ["setup_dir"]
+  },
+  "run_startup_script": {
+    "musician": "ShellExecutorMusician",
+    "action": "run_command",
+    "parameters": {"command": "python --version", "cwd": "C:\\syncphony\\sim_project"},
+    "dependencies": ["write_initial_log"]
+  }
+}

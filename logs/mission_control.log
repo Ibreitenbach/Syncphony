@@ -1,0 +1,180 @@
+{"timestamp": "2025-07-23 21:42:22,593", "process": "MainProcess", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 21:42:22,615", "process": "MainProcess", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 21:42:22,635", "process": "MainProcess", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 21:42:22,658", "process": "MainProcess", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 21:42:23,616", "process": "MainProcess", "level": "INFO", "message": "mission_control.py - Initializing queues..."}
+{"timestamp": "2025-07-23 21:42:23,677", "process": "MainProcess", "level": "INFO", "message": "mission_control.py - Creating Tkinter root..."}
+{"timestamp": "2025-07-23 21:42:24,546", "process": "MainProcess", "level": "INFO", "message": "[MissionControl]: Async backend (WS Server) started in a new thread."}
+{"timestamp": "2025-07-23 21:42:24,547", "process": "MainProcess", "level": "INFO", "message": "MissionControl.__init__ - Finished"}
+{"timestamp": "2025-07-23 21:42:24,547", "process": "MainProcess", "level": "INFO", "message": "mission_control.py - Starting mainloop..."}
+{"timestamp": "2025-07-23 21:42:24,684", "process": "MainProcess", "level": "INFO", "message": "server listening on 127.0.0.1:8765"}
+{"timestamp": "2025-07-23 22:06:31,571", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Initiating SIIP file system analysis for: C:\syncphony"}
+{"timestamp": "2025-07-23 22:06:31,629", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: SIIP File System Analysis started for C:\syncphony. See console for output."}
+{"timestamp": "2025-07-23 22:11:17,283", "process": "MainProcess", "level": "INFO", "message": "--- New Performance Starting ---"}
+{"timestamp": "2025-07-23 22:11:17,302", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'FileSystemMusician' musician process."}
+{"timestamp": "2025-07-23 22:11:17,311", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'ShellExecutorMusician' musician process."}
+{"timestamp": "2025-07-23 22:11:17,321", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'WebMusician' musician process."}
+{"timestamp": "2025-07-23 22:11:17,329", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'Conductor' process."}
+{"timestamp": "2025-07-23 22:11:18,281", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:11:18,282", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 22:11:18,283", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:11:18,284", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:11:18,285", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:11:18,286", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:11:18,286", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 22:11:18,286", "process": "Process-4", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:11:18,287", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:11:18,287", "process": "Process-4", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+.json"}
+{"timestamp": "2025-07-23 22:11:18,288", "process": "Process-4", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:11:18,288", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:11:18,288", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:11:18,289", "process": "Process-4", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:11:18,290", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:11:19,160", "process": "Process-4", "level": "INFO", "message": "[Conductor]: Process started, initializing asyncio loop."}
+{"timestamp": "2025-07-23 22:11:19,164", "process": "Process-4", "level": "INFO", "message": "[Conductor]: Loading Symphony from 'C:/Syncphony/Cleanup_Symphony.json'..."}
+{"timestamp": "2025-07-23 22:11:19,165", "process": "Process-4", "level": "ERROR", "message": "[Conductor]: Invalid JSON in Symphony file: Expecting value: line 1 column 1 (char 0)"}
+{"timestamp": "2025-07-23 22:11:19,166", "process": "Process-4", "level": "ERROR", "message": "[Conductor]: Halting due to error loading symphony."}
+{"timestamp": "2025-07-23 22:11:19,171", "process": "Process-4", "level": "ERROR", "message": "Event validation failed for task symphony_load_error: 'error_type' is a required property
+
+Failed validating 'required' in schema['then']['properties']['payload']:
+    {'required': ['error_type', 'error_message']}
+
+On instance['payload']:
+    {'method': 'load_symphony',
+     'status': 'failure',
+     'path': 'C:/Syncphony/Cleanup_Symphony.json',
+     'error_message': 'Symphony load failed.',
+     'description': 'Failed to load symphony file from disk.'}"}
+{"timestamp": "2025-07-23 22:11:19,171", "process": "Process-4", "level": "INFO", "message": "[Conductor]: Asyncio loop closed. Process shutting down."}
+{"timestamp": "2025-07-23 22:11:19,186", "process": "MainProcess", "level": "INFO", "message": "[ShellExecutorMusician]: Process started, initializing asyncio loop."}
+{"timestamp": "2025-07-23 22:11:19,187", "process": "MainProcess", "level": "INFO", "message": "[ShellExecutorMusician]: Telemetry flusher task started."}
+{"timestamp": "2025-07-23 22:11:19,189", "process": "Process-4", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:11:19,190", "process": "Process-4", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-3' coro=<Conductor._gdc_heartbeat_task() done, defined at C:\syncphony\conductor.py:212> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:11:19,347", "process": "MainProcess", "level": "INFO", "message": "--- Performance Finished ---"}
+{"timestamp": "2025-07-23 22:11:19,348", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Sending STOP signal to processes..."}
+{"timestamp": "2025-07-23 22:11:19,372", "process": "WebMusician", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:11:19,372", "process": "FileSystemMusician", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:11:19,373", "process": "ShellExecutorMusician", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:11:19,458", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: All processes signaled to shut down."}
+{"timestamp": "2025-07-23 22:14:04,504", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Running integrity check on C:\syncphony"}
+{"timestamp": "2025-07-23 22:14:04,505", "process": "MainProcess", "level": "INFO", "message": "--- Starting Orchestral Integrity Check ---"}
+{"timestamp": "2025-07-23 22:14:04,506", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: conductor.py"}
+{"timestamp": "2025-07-23 22:14:04,516", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,516", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: create_siip_packet.py"}
+{"timestamp": "2025-07-23 22:14:04,521", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,522", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: genome_data_cache.py"}
+{"timestamp": "2025-07-23 22:14:04,526", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,527", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: integrity_check_script_content.py"}
+{"timestamp": "2025-07-23 22:14:04,531", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,531", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: leap_toolkit.py"}
+{"timestamp": "2025-07-23 22:14:04,534", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,535", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: mission_control.py"}
+{"timestamp": "2025-07-23 22:14:04,550", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,550", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: musician.py"}
+{"timestamp": "2025-07-23 22:14:04,559", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,560", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: siip_agent.py"}
+{"timestamp": "2025-07-23 22:14:04,586", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,587", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: telemetry.py"}
+{"timestamp": "2025-07-23 22:14:04,595", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,596", "process": "MainProcess", "level": "INFO", "message": "
+[ANALYZING]: telemetry_ws_server.py"}
+{"timestamp": "2025-07-23 22:14:04,621", "process": "MainProcess", "level": "INFO", "message": "  - OK: Syntax is valid."}
+{"timestamp": "2025-07-23 22:14:04,621", "process": "MainProcess", "level": "INFO", "message": "
+--- Integrity Check Report ---"}
+{"timestamp": "2025-07-23 22:14:04,622", "process": "MainProcess", "level": "WARNING", "message": "FOUND 3 ISSUES:"}
+{"timestamp": "2025-07-23 22:14:04,622", "process": "MainProcess", "level": "WARNING", "message": "  1. Dissonance in mission_control.py: Tries to import 'AVAILABLE_MUSICIANS' from 'musician.py', but it is not defined there."}
+{"timestamp": "2025-07-23 22:14:04,622", "process": "MainProcess", "level": "WARNING", "message": "  2. Dissonance in mission_control.py: Tries to import '_buffer_lock' from 'telemetry.py', but it is not defined there."}
+{"timestamp": "2025-07-23 22:14:04,623", "process": "MainProcess", "level": "WARNING", "message": "  3. Dissonance in mission_control.py: Tries to import '_telemetry_buffer' from 'telemetry.py', but it is not defined there."}
+{"timestamp": "2025-07-23 22:14:04,623", "process": "MainProcess", "level": "INFO", "message": "
+--- End of Report ---"}
+{"timestamp": "2025-07-23 22:14:04,624", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Integrity check complete. See console/logs for report."}
+{"timestamp": "2025-07-23 22:14:36,857", "process": "MainProcess", "level": "INFO", "message": "--- New Performance Starting ---"}
+{"timestamp": "2025-07-23 22:14:36,870", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'FileSystemMusician' musician process."}
+{"timestamp": "2025-07-23 22:14:36,881", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'ShellExecutorMusician' musician process."}
+{"timestamp": "2025-07-23 22:14:36,894", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'WebMusician' musician process."}
+{"timestamp": "2025-07-23 22:14:36,909", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'Conductor' process."}
+{"timestamp": "2025-07-23 22:14:37,891", "process": "Process-8", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:14:37,891", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:14:37,892", "process": "Process-8", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 22:14:37,892", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 22:14:37,893", "process": "Process-8", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:14:37,893", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:14:37,893", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:14:37,894", "process": "Process-8", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:14:37,894", "process": "ShellExecutorMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:14:37,894", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 22:14:37,895", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:14:37,896", "process": "FileSystemMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:14:37,896", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\task_lifecycle_event.json"}
+{"timestamp": "2025-07-23 22:14:37,897", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\gdc_snapshot_event.json"}
+{"timestamp": "2025-07-23 22:14:37,898", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\sub_log_entry.json"}
+{"timestamp": "2025-07-23 22:14:37,900", "process": "WebMusician", "level": "INFO", "message": "Loaded schema: C:\syncphony\syncphony_schemas\events\event_base.json"}
+{"timestamp": "2025-07-23 22:14:38,742", "process": "Process-8", "level": "INFO", "message": "[Conductor]: Process started, initializing asyncio loop."}
+{"timestamp": "2025-07-23 22:14:38,746", "process": "Process-8", "level": "INFO", "message": "[Conductor]: Loading Symphony from 'C:/Syncphony/Cleanup_Symphony.json'..."}
+{"timestamp": "2025-07-23 22:14:38,768", "process": "Process-8", "level": "INFO", "message": "[Conductor]: Symphony loaded successfully."}
+{"timestamp": "2025-07-23 22:14:38,769", "process": "Process-8", "level": "ERROR", "message": "[Conductor]: An unexpected error occurred loading symphony: 'str' object has no attribute 'get'"}
+{"timestamp": "2025-07-23 22:14:38,769", "process": "Process-8", "level": "ERROR", "message": "[Conductor]: Halting due to error loading symphony."}
+{"timestamp": "2025-07-23 22:14:38,774", "process": "Process-8", "level": "ERROR", "message": "Event validation failed for task symphony_load_error: 'error_type' is a required property
+
+Failed validating 'required' in schema['then']['properties']['payload']:
+    {'required': ['error_type', 'error_message']}
+
+On instance['payload']:
+    {'method': 'load_symphony',
+     'status': 'failure',
+     'path': 'C:/Syncphony/Cleanup_Symphony.json',
+     'error_message': 'Symphony load failed.',
+     'description': 'Failed to load symphony file from disk.'}"}
+{"timestamp": "2025-07-23 22:14:38,775", "process": "Process-8", "level": "INFO", "message": "[Conductor]: Asyncio loop closed. Process shutting down."}
+{"timestamp": "2025-07-23 22:14:38,790", "process": "Process-8", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:14:38,791", "process": "Process-8", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-3' coro=<Conductor._gdc_heartbeat_task() done, defined at C:\syncphony\conductor.py:212> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:14:38,913", "process": "MainProcess", "level": "INFO", "message": "--- Performance Finished ---"}
+{"timestamp": "2025-07-23 22:14:38,915", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Sending STOP signal to processes..."}
+{"timestamp": "2025-07-23 22:14:38,937", "process": "WebMusician", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:14:38,936", "process": "FileSystemMusician", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:14:38,938", "process": "ShellExecutorMusician", "level": "ERROR", "message": "Task was destroyed but it is pending!
+task: <Task pending name='Task-2' coro=<_telemetry_flusher_task() done, defined at C:\syncphony\telemetry.py:152> wait_for=<Future pending cb=[Task.task_wakeup()]>>"}
+{"timestamp": "2025-07-23 22:14:39,027", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: All processes signaled to shut down."}
+{"timestamp": "2025-07-23 22:27:13,993", "process": "MainProcess", "level": "INFO", "message": "--- New Performance Starting ---"}
+{"timestamp": "2025-07-23 22:27:14,005", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'FileSystemMusician' musician process."}
+{"timestamp": "2025-07-23 22:27:14,018", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'ShellExecutorMusician' musician process."}
+{"timestamp": "2025-07-23 22:27:14,033", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'WebMusician' musician process."}
+{"timestamp": "2025-07-23 22:27:14,047", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'Conductor' process."}
+{"timestamp": "2025-07-23 22:27:14,555", "process": "MainProcess", "level": "INFO", "message": "--- Performance Finished ---"}
+{"timestamp": "2025-07-23 22:27:14,558", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Sending STOP signal to processes..."}
+{"timestamp": "2025-07-23 22:27:14,561", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: All processes signaled to shut down."}
+{"timestamp": "2025-07-23 22:29:15,631", "process": "MainProcess", "level": "INFO", "message": "--- New Performance Starting ---"}
+{"timestamp": "2025-07-23 22:29:15,644", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'FileSystemMusician' musician process."}
+{"timestamp": "2025-07-23 22:29:15,657", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'ShellExecutorMusician' musician process."}
+{"timestamp": "2025-07-23 22:29:15,674", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'WebMusician' musician process."}
+{"timestamp": "2025-07-23 22:29:15,690", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'Conductor' process."}
+{"timestamp": "2025-07-23 22:29:16,200", "process": "MainProcess", "level": "INFO", "message": "--- Performance Finished ---"}
+{"timestamp": "2025-07-23 22:29:16,202", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Sending STOP signal to processes..."}
+{"timestamp": "2025-07-23 22:29:16,206", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: All processes signaled to shut down."}
+{"timestamp": "2025-07-23 22:31:23,281", "process": "MainProcess", "level": "INFO", "message": "--- New Performance Starting ---"}
+{"timestamp": "2025-07-23 22:31:23,297", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'FileSystemMusician' musician process."}
+{"timestamp": "2025-07-23 22:31:23,313", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'ShellExecutorMusician' musician process."}
+{"timestamp": "2025-07-23 22:31:23,327", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'WebMusician' musician process."}
+{"timestamp": "2025-07-23 22:31:23,343", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Launched 'Conductor' process."}
+{"timestamp": "2025-07-23 22:31:23,855", "process": "MainProcess", "level": "INFO", "message": "--- Performance Finished ---"}
+{"timestamp": "2025-07-23 22:31:23,858", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: Sending STOP signal to processes..."}
+{"timestamp": "2025-07-23 22:31:23,860", "process": "MainProcess", "level": "INFO", "message": "[Mission Control]: All processes signaled to shut down."}

@@ -1,0 +1,127 @@
+{
+  "symphony_name": "Orchestrated_Cleanup_v1",
+  "symphony_version": "1.0",
+  "description": "Moves non-essential files and directories from C:\\Syncphony to C:\\Syncphony\\_to_review for user review. This Symphony was composed by Jemini based on the provided siip_packet.json.",
+  "tasks": [
+    {
+      "task_id": "Create_Review_Dir",
+      "musician": "FileSystem",
+      "action": "create_directory",
+      "parameters": {
+        "path": "C:\\Syncphony\\_to_review",
+        "exist_ok": true
+      },
+      "description": "Ensures the destination directory for items pending review exists."
+    },
+    {
+      "task_id": "Move_cocreationv10_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\cocreationv10.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\cocreationv10.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'cocreationv10.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_Cross_Platform_Development_with_Qt_6_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\Cross-Platform Development with Qt 6.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\Cross-Platform Development with Qt 6.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'Cross-Platform Development with Qt 6.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_CSharpNotesForProfessionals_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\CSharpNotesForProfessionals.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\CSharpNotesForProfessionals.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'CSharpNotesForProfessionals.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_flutter_cookbook_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\flutter cookbook.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\flutter cookbook.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'flutter cookbook.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_GitNotesForProfessionals_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\GitNotesForProfessionals.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\GitNotesForProfessionals.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'GitNotesForProfessionals.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_javascript_everywhere_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\javascript-everywhere.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\javascript-everywhere.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'javascript-everywhere.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_KotlinNotesForProfessionals_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\KotlinNotesForProfessionals.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\KotlinNotesForProfessionals.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'KotlinNotesForProfessionals.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_ReactNativeNotesForProfessionals_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\ReactNativeNotesForProfessionals.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\ReactNativeNotesForProfessionals.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'ReactNativeNotesForProfessionals.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_XamarinFormsNotesForProfessionals_pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\XamarinFormsNotesForProfessionals.pdf",
+        "destination": "C:\\Syncphony\\_to_review\\XamarinFormsNotesForProfessionals.pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'XamarinFormsNotesForProfessionals.pdf' to the review folder."
+    },
+    {
+      "task_id": "Move_Clean_Code_PDFDrive_com__pdf",
+      "musician": "FileSystem",
+      "action": "move",
+      "parameters": {
+        "source": "C:\\Syncphony\\Clean Code ( PDFDrive.com ).pdf",
+        "destination": "C:\\Syncphony\\_to_review\\Clean Code ( PDFDrive.com ).pdf"
+      },
+      "depends_on": ["Create_Review_Dir"],
+      "description": "Moves 'Clean Code ( PDFDrive.com ).pdf' to the review folder."
+    }
+  ]
+}
