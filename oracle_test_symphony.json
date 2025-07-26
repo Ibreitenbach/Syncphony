@@ -1,0 +1,78 @@
+{
+    "symphony_info": {
+        "name": "AI Oracle Test Symphony",
+        "description": "Tests the AI Oracle Musician capabilities",
+        "version": "1.0",
+        "created_by": "Human-AI Collaboration",
+        "created_date": "2025-01-25T12:00:00Z"
+    },
+    "tasks": [
+        {
+            "task_id": "analyze_web_scraper_goal",
+            "musician": "AIOracle",
+            "details": {
+                "action": "analyze_goal",
+                "parameters": {
+                    "goal_description": "I want to create a web scraper that collects real estate listings from a website and saves them to a CSV file",
+                    "context": "This is for market research purposes. I need to track price changes over time."
+                }
+            },
+            "depends_on": [],
+            "description": "Have AI Oracle analyze the web scraping goal"
+        },
+        {
+            "task_id": "assess_scraper_capabilities",
+            "musician": "AIOracle", 
+            "details": {
+                "action": "capability_assessment",
+                "parameters": {
+                    "requirements": [
+                        "Web scraping functionality",
+                        "HTML parsing",
+                        "CSV file generation",
+                        "Error handling for failed requests",
+                        "Rate limiting to be respectful"
+                    ]
+                }
+            },
+            "depends_on": ["analyze_web_scraper_goal"],
+            "description": "Assess if Syncphony can handle web scraping requirements"
+        },
+        {
+            "task_id": "suggest_scraper_symphony",
+            "musician": "AIOracle",
+            "details": {
+                "action": "suggest_symphony", 
+                "parameters": {
+                    "goal_description": "Create a web scraper for real estate listings that saves to CSV"
+                }
+            },
+            "depends_on": ["assess_scraper_capabilities"],
+            "description": "Get AI Oracle suggestions for optimal Symphony structure"
+        },
+        {
+            "task_id": "generate_complete_symphony",
+            "musician": "AIOracle",
+            "details": {
+                "action": "generate_symphony",
+                "parameters": {
+                    "goal_description": "Create a complete web scraper Symphony that collects real estate data and saves to CSV with proper error handling"
+                }
+            },
+            "depends_on": ["suggest_scraper_symphony"], 
+            "description": "Generate a complete, executable Symphony for the web scraper"
+        },
+        {
+            "task_id": "explain_the_approach",
+            "musician": "AIOracle",
+            "details": {
+                "action": "explain_approach",
+                "parameters": {
+                    "goal_description": "Web scraping real estate listings to CSV file"
+                }
+            },
+            "depends_on": ["generate_complete_symphony"],
+            "description": "Explain the approach in human-friendly terms"
+        }
+    ]
+}

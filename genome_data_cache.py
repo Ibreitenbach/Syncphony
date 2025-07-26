@@ -53,6 +53,62 @@ class GenomeDataCache:
         """Returns a deep copy of the entire data cache."""
         return copy.deepcopy(self._data_cache)  # MODIFIED: Use deepcopy for efficiency over json round-trip
 
+    # ADDED: Missing methods that Conductor expects
+    def set(self, key: str, value):
+        """
+        Sets a value using dot notation for nested keys.
+        Examples:
+        - set('symphony_structure', data) 
+        - set('performance_status', 'loaded')
+        - set('task_status.task_1', 'completed')
+        """
+        if '.' in key:
+            # Handle nested keys like 'task_status.task_1'
+            parts = key.split('.')
+            category = parts[0]
+            sub_key = '.'.join(parts[1:])
+            
+            if category not in self._data_cache:
+                self._data_cache[category] = {}
+            
+            # Create nested structure if needed
+            current = self._data_cache[category]
+            nested_parts = sub_key.split('.')
+            
+            for part in nested_parts[:-1]:
+                if part not in current:
+                    current[part] = {}
+                current = current[part]
+            
+            current[nested_parts[-1]] = value
+        else:
+            # Simple key, store at root level
+            self._data_cache[key] = value
+
+    def get(self, key: str, default=None):
+        """
+        Gets a value using dot notation for nested keys.
+        Examples:
+        - get('symphony_structure')
+        - get('performance_status') 
+        - get('task_status.task_1')
+        """
+        if '.' in key:
+            # Handle nested keys
+            parts = key.split('.')
+            current = self._data_cache
+            
+            for part in parts:
+                if isinstance(current, dict) and part in current:
+                    current = current[part]
+                else:
+                    return default
+            
+            return current
+        else:
+            # Simple key
+            return self._data_cache.get(key, default)
+
     def _calculate_hash(self, data: str) -> str:
         """Helper to calculate a hash of string data."""
         if HASH_ALGORITHM == "SHA256":
@@ -98,8 +154,11 @@ class GenomeDataCache:
         """
         all_data_for_hashing = {}
         for category, items in self._data_cache.items():
-            for key, value in items.items():
-                all_data_for_hashing[f"{category}.{key}"] = value
+            if isinstance(items, dict):
+                for key, value in items.items():
+                    all_data_for_hashing[f"{category}.{key}"] = value
+            else:
+                all_data_for_hashing[category] = items
 
         leaf_hashes = self._get_leaf_hashes(all_data_for_hashing)
         merkle_root = self._build_merkle_tree(leaf_hashes)

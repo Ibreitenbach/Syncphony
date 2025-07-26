@@ -1,0 +1,42 @@
+[
+    {
+        "event_id": "event-1dbee01a84063cb6-1753493589587",
+        "timestamp": "2025-07-26T01:33:09.587932Z",
+        "schema_version": "1.0.0",
+        "musician_name": "AIOracle",
+        "task_id": "analyze_web_scraper_goal",
+        "event_type": "task_start",
+        "payload": {
+            "method": "AIOracleMusician.analyze_goal",
+            "args": {
+                "goal_description": "I want to create a web scraper that collects real estate listings from a website and saves them to a CSV file",
+                "context": "This is for market research purposes. I need to track price changes over time."
+            },
+            "description": "Starting execution for task analyze_web_scraper_goal.",
+            "status": "in_progress"
+        },
+        "data_hash": "0dc27910b2b677f08972877c0d301a97633de66218345d69c15e846ede0fe673",
+        "parent_event_id": null,
+        "sensitive_data_masked": false
+    },
+    {
+        "event_id": "event-935ae6036843183c-1753493589592",
+        "timestamp": "2025-07-26T01:33:09.592761Z",
+        "schema_version": "1.0.0",
+        "musician_name": "AIOracle",
+        "task_id": "analyze_web_scraper_goal",
+        "event_type": "task_error",
+        "payload": {
+            "method": "AIOracleMusician.analyze_goal",
+            "status": "failure",
+            "error_type": "TypeError",
+            "error_message": "MusicianProcess._execute_decorated_action() takes 4 positional arguments but 5 were given",
+            "duration_ms": 3.8671493530273438,
+            "stack_trace": "Traceback (most recent call last):\n  File \"C:\\syncphony\\telemetry.py\", line 227, in wrapper\n    result = await func(instance, action_name, parameters, task_id, *args, **kwargs)\n                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: MusicianProcess._execute_decorated_action() takes 4 positional arguments but 5 were given\n",
+            "description": "Error during execution for task analyze_web_scraper_goal."
+        },
+        "data_hash": "933c8214e951305fa4141989f1297413dbb30790052dda4f781b4276ddb69319",
+        "parent_event_id": null,
+        "sensitive_data_masked": false
+    }
+]

@@ -2,6 +2,7 @@
 # Key Changes:
 # - Refactored ShellExecutorMusician's run_command to use shell=False and shlex.split().
 # - This is a critical security enhancement to prevent shell injection vulnerabilities.
+# - Added AIOracleMusician import and registration
 
 import multiprocessing
 import time
@@ -16,8 +17,6 @@ import collections
 import sys
 import random
 import shlex
-from a_sync_plus.sync import patch_everywhere
-patch_everywhere()
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from telemetry import log_task_lifecycle, emit_telemetry_event, _telemetry_flusher_task
@@ -201,6 +200,15 @@ class WebMusician(MusicianProcess):
     async def post_data(self, url, payload): # This action is async
         return await post_data_to_api(url, payload)
 
+# Import the AI Oracle Musician
+try:
+    from ai_oracle_musician import AIOracleMusician
+    AI_ORACLE_AVAILABLE = True
+except ImportError:
+    AI_ORACLE_AVAILABLE = False
+    print("Warning: AI Oracle Musician not available - ai_oracle_musician.py not found")
+
+# Build the available musicians dictionary
 AVAILABLE_MUSICIANS = {
     "FileSystemMusician": FileSystemMusician,
     "ShellExecutorMusician": ShellExecutorMusician,
@@ -209,3 +217,11 @@ AVAILABLE_MUSICIANS = {
     "ShellExecutor": ShellExecutorMusician,
     "Web": WebMusician,
 }
+
+# Add AI Oracle if available
+if AI_ORACLE_AVAILABLE:
+    AVAILABLE_MUSICIANS.update({
+        "AIOracleMusician": AIOracleMusician,
+        "AIOracle": AIOracleMusician,
+        "Oracle": AIOracleMusician
+    })

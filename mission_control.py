@@ -4,6 +4,8 @@
 # - Updated _check_queues_for_updates to process messages from gdc_update_queue.
 # - This allows the GDC instance in Mission Control (and by extension, the WebSocket server)
 #   to reflect the live state from the Conductor process.
+# - Fixed missing methods that were causing AttributeError
+# - Fixed Conductor launch to properly pass genome_data_cache parameter
 
 import tkinter as tk
 from tkinter import filedialog, scrolledtext, messagebox, simpledialog, ttk
@@ -231,9 +233,12 @@ class MissionControl:
             musician.start()
             self.log_message(f"[Mission Control]: Launched '{name}' musician process.")
 
+        # FIXED: Create a new GenomeDataCache instance specifically for the Conductor
+        conductor_gdc = GenomeDataCache()
+        
         self.conductor_process = multiprocessing.Process(
             target=conductor_main,
-            args=(self.symphony_path, self.task_queues, self.reporting_queue, self.input_queue, self.log_queue, self.gdc_update_queue)
+            args=(self.symphony_path, self.task_queues, self.reporting_queue, self.input_queue, self.log_queue, self.gdc_update_queue, conductor_gdc)
         )
         self.conductor_process.start()
         self.log_message(f"[Mission Control]: Launched 'Conductor' process.")
@@ -294,7 +299,6 @@ class MissionControl:
             self.root.destroy()
             logger.info("[MissionControl]: Application shut down.")
 
-
     def select_siip_file(self):
         siip_file = filedialog.askopenfilename(
             title="Select SIIP Data File (e.g., log.txt)",
@@ -311,8 +315,12 @@ class MissionControl:
             self.log_message(f"[Mission Control]: Initiating SIIP file system analysis for: {root_dir}")
             try:
                 from create_siip_packet import main as create_siip_main
+                # NEW: Sync wrapper to properly run the async main in a thread
+                def sync_siip_wrapper(rd):
+                    import asyncio
+                    asyncio.run(create_siip_main(rd))
                 # Run in a separate thread to avoid blocking the GUI
-                threading.Thread(target=create_siip_main, args=(root_dir,), daemon=True).start()
+                threading.Thread(target=sync_siip_wrapper, args=(root_dir,), daemon=True).start()
                 self.log_message(f"[Mission Control]: SIIP File System Analysis started for {root_dir}. See console for output.")
             except Exception as e:
                 self.log_message(f"[Mission Control ERROR]: SIIP analysis failed: {e}")

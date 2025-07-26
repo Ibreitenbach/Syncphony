@@ -1,0 +1,42 @@
+[
+    {
+        "event_id": "event-49f53cd32d6ff02c-1753495167702",
+        "timestamp": "2025-07-26T01:59:27.702150Z",
+        "schema_version": "1.0.0",
+        "musician_name": "AIOracle",
+        "task_id": "analyze_web_scraper_goal",
+        "event_type": "task_start",
+        "payload": {
+            "method": "AIOracleMusician.analyze_goal",
+            "args": {
+                "goal_description": "I want to create a web scraper that collects real estate listings from a website and saves them to a CSV file",
+                "context": "This is for market research purposes. I need to track price changes over time."
+            },
+            "description": "Starting execution for task analyze_web_scraper_goal.",
+            "status": "in_progress"
+        },
+        "data_hash": "0dc27910b2b677f08972877c0d301a97633de66218345d69c15e846ede0fe673",
+        "parent_event_id": null,
+        "sensitive_data_masked": false
+    },
+    {
+        "event_id": "event-b76727a7beba5cfd-1753495167706",
+        "timestamp": "2025-07-26T01:59:27.706056Z",
+        "schema_version": "1.0.0",
+        "musician_name": "AIOracle",
+        "task_id": "analyze_web_scraper_goal",
+        "event_type": "task_error",
+        "payload": {
+            "method": "AIOracleMusician.analyze_goal",
+            "status": "failure",
+            "error_type": "ValueError",
+            "error_message": "action_name must be a string, got <class 'ai_oracle_musician.AIOracleMusician'>: <AIOracleMusician name='AIOracle' parent=23844 started>",
+            "duration_ms": 2.5703907012939453,
+            "stack_trace": "Traceback (most recent call last):\n  File \"C:\\syncphony\\telemetry.py\", line 227, in wrapper\n    result = await func(instance, action_name, parameters, task_id, *args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\syncphony\\ai_oracle_musician.py\", line 332, in _execute_decorated_action\n    raise ValueError(f\"action_name must be a string, got {type(action_name)}: {action_name}\")\nValueError: action_name must be a string, got <class 'ai_oracle_musician.AIOracleMusician'>: <AIOracleMusician name='AIOracle' parent=23844 started>\n",
+            "description": "Error during execution for task analyze_web_scraper_goal."
+        },
+        "data_hash": "cfb166e4bd5fbfac0400b309dbbc5619928ff4f82cd39cfc102bd83106a07725",
+        "parent_event_id": null,
+        "sensitive_data_masked": false
+    }
+]
